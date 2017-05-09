@@ -1,0 +1,146 @@
+html {
+width: 100vw;
+height: 100vh;
+}
+
+.pflentry{
+ margin:auto;
+ text-align:center;
+ font-size: 75px;
+ color:white;
+ margin-bottom: 4vh;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+.pfl-header{
+ font-size: 5vh;
+}
+
+
+
+.signup-form{
+  color:#F9A603;
+  width:240px;
+  position:relative;
+  margin-bottom: 50px;
+}
+
+.signup-message{
+  text-align: center;
+  color: red;
+  font-family: 'Rokkitt', serif;
+}
+
+.signup-message2{
+  text-align: center;
+  color: black;
+  font-family: 'Rokkitt', serif;
+}
+
+
+.bodyText{
+ font-family: 'Rokkitt', serif;
+ color:black;
+}
+.home-text{
+ color: black;
+ margin-bottom: 7vh;
+ text-align: center;
+ margin-left: 70px;
+ margin-right: 70px;
+ width:800px;
+}
+
+.jumbotronHeader2{
+ margin-top: 8vh;
+ text-align: center;
+ font-family: 'Rokkitt', serif;
+ letter-spacing: 5px;
+ font-size: 7vh;
+ color: black;
+ margin-bottom: 0;
+}
+.navigationBar{
+ position: absolute;
+ z-index: 1;
+ width:100vw;
+}
+
+.submitForm {
+ border: 1px solid black;
+ border-radius: 5px;
+ text-align: center;
+ width:80px;
+ padding:.5vh;
+ background-color:#F9A603;
+ cursor: pointer;
+ color:rgba(255,255,255, 0.8);
+}
+.submitForm:hover {
+ background-color: #F25C00;
+ cursor:pointer;
+ color: white;
+}
+
+.submitForm2 {
+ border: 1px solid rgb(70, 70, 70);
+ border-radius: 5px;
+ text-align: center;
+ width: 200px;
+ padding:.5vh;
+ background-color:#F9A603;
+ cursor: pointer;
+ margin-left: 1vw;
+ color: white;
+}
+.submitForm2:hover {
+ background-color: #F25C00;
+ color: white;
+ cursor:pointer;
+}
+
+.history-slider{
+ text-align: center;
+}
+
+.subheader{
+ margin-top: 0;
+ font-family: 'Rokkitt', serif;
+ letter-spacing: 5px;
+ text-align: center;
+ color:black;
+}
+
+.subheader3{
+ margin-top: 4vh;
+ font-size: 6vh;
+ font-family: 'Rokkitt', serif;
+ letter-spacing: 5px;
+ text-align: center;
+ color:black;
+ border:1px solid black;
+ padding:20px;
+ border-radius: 15px;
+ background-color: #ededed;
+}
+
+.invalidUser{
+  color: red;
+  font-family: 'Rokkitt', serif;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.welcome-header{
+font-size:7vw;
+color:black;
+margin-top: 10vh;
+margin-bottom: 2vh;
+text-align: center;
+font-family: 'Rokkitt', serif;
+}
+
+ .navbar-default{
+   background-color:#3251FF
+ }
