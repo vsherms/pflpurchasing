@@ -10,7 +10,7 @@ class Home extends React.Component{
   }
 
   componentDidMount() {
-    this.props.locationStore.loadProducts(this.props.userStore.pflUser, this.props.userStore.pflPass);
+    this.props.orderStore.loadProducts(this.props.userStore.pflUser, this.props.userStore.pflPass);
   }
 
   render(){
@@ -24,7 +24,7 @@ class Home extends React.Component{
 }
 Home.propTypes={
   userStore: React.PropTypes.object,
-  locationStore: React.PropTypes.object
+  orderStore: React.PropTypes.object
 };
 
-export default inject('userStore', 'locationStore')(observer(Home));
+export default inject('userStore', 'orderStore')(observer(Home));

@@ -4,25 +4,26 @@ import { Button, Glyphicon } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 const dateFormat = require('dateformat');
 
-export default class LocationStore {
+export default class OrderStore {
   constructor(){
     extendObservable(this, {
-      center: {
-        lat: '',
-        lng: ''
-      },
-      zoom: 11,
-      currentLocation: {},
-      weather: {
-        conditions: '',
-        temp: '',
-        windSpeed: '',
-        windDir:'',
-      },
       products:[],
       currentOrder: {},
-      defaultTitle: 'New Honey Hole',
-      honeyHoleClicked: false
+      fieldInfo: [],
+      firstName: '',
+      lastName: '',
+      companyName: '',
+      address1: '',
+      address2: '',
+      city: '',
+      state: '',
+      postalCode: '',
+      countryCode: '',
+      email: '',
+      phone: '',
+      deliveryMethodCode: '',
+      price: 0
+
     });
 
     this.savePosition = this.savePosition.bind(this);
@@ -115,8 +116,9 @@ export default class LocationStore {
       }
     })
     .then(result => result.json())
-    // .then(result => this.currentOrder = result.results.data)
-    .then(result => console.log(result.results.data));
+    .then(result => this.currentOrder = result.results.data)
+    .then(result => browserHistory.replace("/orderdetails"));
+    // .then(result => console.log(result.results.data));
   }
 
   deleteLocation(locationId) {
@@ -130,22 +132,5 @@ export default class LocationStore {
 
   honeyHoleClick(){
     this.honeyHoleClicked = false;
-  }
-
-  loadLastWheel(){
-    if(this.wheels.length > 0){
-      for(let i = 0; i < this.segs.length; i++) {
-        this.segs[i].score = this.wheels[this.wheels.length - 1].segs[i].score;
-      }
-      this.newWheel = false;
-    }
-  }
-
-  resetWheel(){
-    for(let i = 0; i < this.segs.length; i++) {
-      this.segs[i].score = 0;
-    }
-    this.newWheel = true;
-    this.loadCanvas();
   }
 }

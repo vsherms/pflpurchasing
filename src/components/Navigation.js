@@ -41,7 +41,7 @@ class Navigation extends React.Component {
 Navigation.propTypes = {
   userStore: React.PropTypes.object,
   logUserOut: React.PropTypes.func,
-  locationStore: React.PropTypes.object
+  orderStore: React.PropTypes.object
 };
 
-export default inject('userStore', 'locationStore')(observer(Navigation));
+export default inject('userStore', 'orderStore')(observer(Navigation));
