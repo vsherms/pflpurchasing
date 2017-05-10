@@ -15,15 +15,26 @@ class OrderDetails extends React.Component {
     };
     this.handleRadioClick = this.handleRadioClick.bind(this);
     this.handleReviewOrder = this.handleReviewOrder.bind(this);
+    this.loadFieldInfo = this.loadFieldInfo.bind(this);
   }
+
+  componentDidMount(){
+    this.loadFieldInfo();
+  }
+
+  loadFieldInfo(){
+    let fieldInfo = [];
+    this.props.orderStore.currentOrder.templateFields.fieldlist.field.forEach(field =>
+    this.props.orderStore.fieldInfo.push([field.fieldname, '']));
+  }
+
 
   handleRadioClick(e){
     this.setState({mailingOptions: e.target.value});
   }
 
   handleReviewOrder(){
-    this.props.orderStore.deliveryMethodCode = this.props.orderStore.currentOrder.deliveredPrices[this.state.mailingOptions].deliveryMethodCode;
-    this.props.orderStore.price = this.props.orderStore.currentOrder.deliveredPrices[this.state.mailingOptions].price;
+    this.props.orderStore.deliveryInfo = this.props.orderStore.currentOrder.deliveredPrices[this.state.mailingOptions];
     browserHistory.replace("/revieworder");
   }
 
@@ -44,7 +55,7 @@ class OrderDetails extends React.Component {
             <h3>Price: ${this.props.orderStore.currentOrder.deliveredPrices[this.state.mailingOptions].price}</h3>
             <h3>Product Name: {this.props.orderStore.currentOrder.name}</h3>
             <Image src={this.props.orderStore.currentOrder.imageURL} style={{width:'240px', height:'200px'}}/>
-            {this.props.orderStore.currentOrder.hasTemplate ?
+            {this.props.orderStore.currentOrder.hasTemplate && this.props.orderStore.fieldInfo.length > 0 ?
               <Template currentOrder={this.props.orderStore.currentOrder} /> : ''}
             <h3>Shipping Options</h3>
             {shippingOptions}

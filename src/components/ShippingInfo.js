@@ -31,58 +31,47 @@ class ShippingInfo extends React.Component{
   }
 
   handleFirstNameChange(e) {
-    this.setState({firstName: e.target.value});
-    this.props.orderStore.firstName = this.state.firstName;
+    this.props.orderStore.firstName = e.target.value;
   }
 
   handleLastNameChange(e) {
-    this.setState({lastName: e.target.value});
-    this.props.orderStore.lastName = this.state.lastName;
+    this.props.orderStore.lastName = e.target.value;
   }
 
   handleCompanyNameChange(e) {
-    this.setState({companyName: e.target.value});
-    this.props.orderStore.companyName = this.state.companyName;
+    this.props.orderStore.companyName = e.target.value;
   }
 
   handleAddress1Change(e) {
-    this.setState({address1: e.target.value});
-    this.props.orderStore.address1 = this.state.address1;
+    this.props.orderStore.address1 = e.target.value;
   }
 
   handleAddress2Change(e) {
-    this.setState({address2: e.target.value});
-    this.props.orderStore.address2 = this.state.address2;
+    this.props.orderStore.address2 = e.target.value;
   }
 
   handleCityChange(e) {
-    this.setState({city: e.target.value});
-    this.props.orderStore.city = this.state.city;
+    this.props.orderStore.city = e.target.value;
   }
 
   handleStateChange(e) {
-    this.setState({state: e.target.value});
-    this.props.orderStore.state = this.state.state;
+    this.props.orderStore.state = e.target.value;
   }
 
   handlePostalCodeChange(e) {
-    this.setState({postalCode: e.target.value});
-    this.props.orderStore.postalCode = this.state.postalCode;
+    this.props.orderStore.postalCode = e.target.value;
   }
 
   handleCountryCodeChange(e) {
-    this.setState({countryCode: e.target.value});
-    this.props.orderStore.countryCode = this.state.countryCode;
+    this.props.orderStore.countryCode = e.target.value;
   }
 
   handleEmailChange(e) {
-    this.setState({email: e.target.value});
-    this.props.orderStore.email = this.state.email;
+    this.props.orderStore.email = e.target.value;
   }
 
   handlePhoneChange(e) {
-    this.setState({phone: e.target.value});
-    this.props.orderStore.phone = this.state.phone;
+    this.props.orderStore.phone = e.target.value;
   }
 
   render(){
@@ -91,7 +80,7 @@ class ShippingInfo extends React.Component{
         <div className="form-group">
           <input
             onChange={this.handleFirstNameChange}
-            value={this.state.firstName}
+            value={this.props.orderStore.firstName}
             type="text"
             className="form-control"
             id="first-name"
@@ -100,7 +89,7 @@ class ShippingInfo extends React.Component{
         <div className="form-group">
           <input
             onChange={this.handleLastNameChange}
-            value={this.state.lastName}
+            value={this.props.orderStore.lastName}
             type="text"
             className="form-control"
             id="last-name"
@@ -109,7 +98,7 @@ class ShippingInfo extends React.Component{
         <div className="form-group">
           <input
             onChange={this.handleCompanyNameChange}
-            value={this.state.companyName}
+            value={this.props.orderStore.companyName}
             type="text"
             className="form-control"
             id="company-name"
@@ -118,7 +107,7 @@ class ShippingInfo extends React.Component{
         <div className="form-group">
           <input
             onChange={this.handleAddress1Change}
-            value={this.state.address1}
+            value={this.props.orderStore.address1}
             type="text"
             className="form-control"
             id="address1"
@@ -127,7 +116,7 @@ class ShippingInfo extends React.Component{
         <div className="form-group">
           <input
             onChange={this.handleAddress2Change}
-            value={this.state.address2}
+            value={this.props.orderStore.address2}
             type="text"
             className="form-control"
             id="address2"
@@ -136,7 +125,7 @@ class ShippingInfo extends React.Component{
         <div className="form-group">
           <input
             onChange={this.handleCityChange}
-            value={this.state.city}
+            value={this.props.orderStore.city}
             type="text"
             className="form-control"
             id="city"
@@ -145,7 +134,7 @@ class ShippingInfo extends React.Component{
         <div className="form-group">
           <input
             onChange={this.handleStateChange}
-            value={this.state.state}
+            value={this.props.orderStore.state}
             type="text"
             className="form-control"
             id="state"
@@ -154,7 +143,7 @@ class ShippingInfo extends React.Component{
         <div className="form-group">
           <input
             onChange={this.handlePostalCodeChange}
-            value={this.state.postalCode}
+            value={this.props.orderStore.postalCode}
             type="text"
             className="form-control"
             id="postal-code"
@@ -163,7 +152,7 @@ class ShippingInfo extends React.Component{
         <div className="form-group">
           <input
             onChange={this.handleCountryCodeChange}
-            value={this.state.countryCode}
+            value={this.props.orderStore.countryCode}
             type="text"
             className="form-control"
             id="country-code"
@@ -172,7 +161,7 @@ class ShippingInfo extends React.Component{
         <div className="form-group">
           <input
             onChange={this.handleEmailChange}
-            value={this.state.email}
+            value={this.props.orderStore.email}
             type="text"
             className="form-control"
             id="email"
@@ -181,7 +170,7 @@ class ShippingInfo extends React.Component{
         <div className="form-group">
           <input
             onChange={this.handlePhoneChange}
-            value={this.state.phone}
+            value={this.props.orderStore.phone}
             type="text"
             className="form-control"
             id="phone"

@@ -21,9 +21,7 @@ export default class OrderStore {
       countryCode: '',
       email: '',
       phone: '',
-      deliveryMethodCode: '',
-      price: 0
-
+      deliveryInfo: {}
     });
 
     this.savePosition = this.savePosition.bind(this);
