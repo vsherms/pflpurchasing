@@ -41,7 +41,7 @@ class OrderDetails extends React.Component {
   render(){
     let shippingOptions = (
       this.props.orderStore.currentOrder.deliveredPrices.map((option,index) =>
-      <div key={index}>
+      <div key={index} style={{paddingBottom: '20px'}}>
         <Radio name="mailingOptions" onClick={this.handleRadioClick} value={index} defaultChecked={!index} inline>
         {option.description}
         </Radio>
@@ -51,16 +51,27 @@ class OrderDetails extends React.Component {
 
     return(
           <div className="container">
-            <h1 className="welcome-header">Please select your order details</h1>
-            <h3>Price: ${this.props.orderStore.currentOrder.deliveredPrices[this.state.mailingOptions].price}</h3>
-            <h3>Product Name: {this.props.orderStore.currentOrder.name}</h3>
-            <Image src={this.props.orderStore.currentOrder.imageURL} style={{width:'240px', height:'200px'}}/>
-            {this.props.orderStore.currentOrder.hasTemplate && this.props.orderStore.fieldInfo.length > 0 ?
-              <Template currentOrder={this.props.orderStore.currentOrder} /> : ''}
-            <h3>Shipping Options</h3>
-            {shippingOptions}
-            <h3>Shipping Info</h3>
-            <ShippingInfo/>
+            <h1 className="welcome-header">Please Input Your Order Details</h1>
+            <div style={{border: '1px solid black', borderRadius: '10px',
+              display: 'flex', flexDirection: 'column', justifyContent: 'space between', alignItems: 'center', padding:'20px'}}>
+              <h3>{this.props.orderStore.currentOrder.name}</h3>
+              <Image src={this.props.orderStore.currentOrder.imageURL} style={{width:'240px', height:'200px'}}/>
+            </div>
+            <div style={{display: 'flex', flexDirection: 'row'}}>
+              {this.props.orderStore.currentOrder.hasTemplate && this.props.orderStore.fieldInfo.length > 0 ?
+                <Template currentOrder={this.props.orderStore.currentOrder} /> : ''}
+              <div style={{border: '1px solid black', borderRadius: '10px',
+                display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '50%'}}>
+                <h3>Shipping Info</h3>
+                  <ShippingInfo/>
+              </div>
+              <div style={{border: '1px solid black', borderRadius: '10px',
+                display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width:'50%'}}>
+                <h3>Shipping Options</h3>
+                {shippingOptions}
+                <h4>Total Price: ${Math.round(this.props.orderStore.currentOrder.deliveredPrices[this.state.mailingOptions].price *100)/100}</h4>
+              </div>
+            </div>
             <Button onClick={this.handleReviewOrder} bsStyle="primary" style={{marginTop:'20px', marginBottom:'20px'}}>Review Order</Button>
           </div>
     );

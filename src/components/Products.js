@@ -17,7 +17,9 @@ class Products extends React.Component {
 
   render() {
     let productList = this.props.orderStore.products.map((product, index) =>
-      <div key={index} src={product.imageURL} style={{width:'240px', margin:'10px', display:'flex', flexDirection:'column', justifyContent:'space-between', border:'1px solid grey'}}>
+      <div key={index} src={product.imageURL}
+        style={{width:'240px', margin:'10px', display:'flex', flexDirection:'column',
+          justifyContent:'space-between', border:'1px solid grey', borderRadius: '10px'}}>
         <Image src={product.imageURL} style={{width:'100%', height:'200px', padding:'10px'}}/>
         <h4 style={{padding:'10px'}}>{product.name}</h4>
         <p style={{padding:'10px'}}>

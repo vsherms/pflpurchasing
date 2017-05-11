@@ -9,25 +9,8 @@ class Template extends React.Component {
       currentField: '',
       fieldInfo: []
     };
-    // this.loadFieldInfo = this.loadFieldInfo.bind(this);
     this.handleFieldChange = this.handleFieldChange.bind(this);
-    // this.setFieldInfo = this.setFieldInfo.bind(this);
   }
-
-  // componentDidMount(){
-  //   this.loadFieldInfo();
-  // }
-  //
-  // loadFieldInfo(){
-  //   let fieldInfo = [];
-  //   this.props.currentOrder.templateFields.fieldlist.field.forEach(field =>
-  //   this.props.orderStore.fieldInfo.push([field.fieldname, '']));
-  // }
-
-  // setFieldInfo(index){
-  //   this.props.orderStore.fieldInfo[index][1] = this.state.currentField;
-  //   console.log(this.props.orderStore.fieldInfo[index][1]);
-  // }
 
   handleFieldChange(index, e){
     this.props.orderStore.fieldInfo[index][1] = e.target.value;
@@ -37,13 +20,13 @@ class Template extends React.Component {
   render(){
     let fieldList = (
       this.props.currentOrder.templateFields.fieldlist.field.map((field, index) =>
-      <div key={index}>
+      <div key={index} style={{width: '240px'}}>
         {field.type !== "SEPARATOR" ? <ControlLabel>{field.fieldname}</ControlLabel> : ''}
         {field.type == "SEPARATOR" ? <div><br></br><br></br></div> : ""}
         {field.type == "MULTILINE" ?
            <FormControl value={this.props.orderStore.fieldInfo[index][1]} onChange={this.handleFieldChange.bind(null, index)} componentClass="textarea" placeholder={field.prompt[0].text} />
            : ''}
-        {field.type == "SINGLELINE" ?
+        {field.type == "SINGLELINE" || (field.type !== "MULTILINE" && field.type !== "SEPARATOR") ?
           (<div className="form-group">
             <input
               type="text"
@@ -59,7 +42,8 @@ class Template extends React.Component {
     );
 
     return(
-      <div>
+      <div style={{border: '1px solid black', borderRadius: '10px',
+        display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '50%'}}>
         <h3>Product Template</h3>
         {fieldList}
       </div>

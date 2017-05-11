@@ -77,7 +77,7 @@ class ShippingInfo extends React.Component{
   render(){
     return(
       <form method="" role="form">
-        <div className="form-group">
+        <div className="form-group" style={{width:'240px'}}>
           <input
             onChange={this.handleFirstNameChange}
             value={this.props.orderStore.firstName}
