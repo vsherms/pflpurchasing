@@ -78,7 +78,7 @@ class SignUp extends React.Component {
 
     let signUpForm = (
       <div className="signup-form">
-        <h1 className="bodyText">Register</h1>
+        <h2>Register</h2>
         <form method="" role="form">
             <div className="form-group">
               <input

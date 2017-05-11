@@ -25,14 +25,17 @@ class ReviewOrder extends React.Component {
 
   render(){
     let templateDetails = (
-      <ListGroup style={{width:'80%'}}>
-        {this.props.orderStore.fieldInfo.map((field, index) =>
-          <ListGroupItem key={index}>
-            <h4 ><strong>{field[0].fieldname}:</strong> {field[1]}</h4>
-          </ListGroupItem>
-          )
-        }
-      </ListGroup>
+      <div style={{border: '1px solid black', borderRadius: '10px',
+        display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '50%'}}>
+        <ListGroup style={{width:'80%', paddingTop:'20px'}}>
+          {this.props.orderStore.fieldInfo.map((field, index) =>
+            <ListGroupItem key={index}>
+              <h4 ><strong>{field[0].fieldname}:</strong> {field[1]}</h4>
+            </ListGroupItem>
+            )
+          }
+        </ListGroup>
+      </div>
     );
 
     return(
@@ -44,10 +47,7 @@ class ReviewOrder extends React.Component {
               <Image src={this.props.orderStore.currentOrder.imageURL} style={{width:'240px', height:'200px'}}/>
             </div>
             <div style={{display: 'flex', flexDirection: 'row'}}>
-              <div style={{border: '1px solid black', borderRadius: '10px',
-                display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '50%'}}>
-                {this.props.orderStore.currentOrder.hasTemplate ? templateDetails : ''}
-              </div>
+              {this.props.orderStore.currentOrder.hasTemplate ? templateDetails : ''}
               <div style={{border: '1px solid black', borderRadius: '10px',
                 display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '50%'}}>
                 <h3>Shipping Info</h3>
