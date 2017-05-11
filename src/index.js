@@ -9,6 +9,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import OrderDetails from './components/OrderDetails';
 import ReviewOrder from './components/ReviewOrder';
+import OrderNumber from './components/OrderNumber';
 import { Provider } from 'mobx-react';
 import UserStore from './stores/UserStore';
 import OrderStore from './stores/OrderStore';
@@ -26,6 +27,7 @@ render((
           <IndexRoute component={Home}/>
           <Route path="/orderdetails" component={OrderDetails}/>
           <Route path="/revieworder" component={ReviewOrder}/>
+          <Route path="/ordernumber" component={OrderNumber}/>
         </Route>
       </Route>
     </Router>

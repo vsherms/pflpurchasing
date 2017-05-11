@@ -25,7 +25,7 @@ class OrderDetails extends React.Component {
   loadFieldInfo(){
     let fieldInfo = [];
     this.props.orderStore.currentOrder.templateFields.fieldlist.field.forEach(field =>
-    this.props.orderStore.fieldInfo.push([field.fieldname, '']));
+    this.props.orderStore.fieldInfo.push([field, '']));
   }
 
 

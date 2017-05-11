@@ -39,7 +39,7 @@ class Template extends React.Component {
       this.props.currentOrder.templateFields.fieldlist.field.map((field, index) =>
       <div key={index}>
         {field.type !== "SEPARATOR" ? <ControlLabel>{field.fieldname}</ControlLabel> : ''}
-        {field.required == "Y" && field.type == "SEPARATOR" ? <div><br></br><br></br></div> : ""}
+        {field.type == "SEPARATOR" ? <div><br></br><br></br></div> : ""}
         {field.type == "MULTILINE" ?
            <FormControl value={this.props.orderStore.fieldInfo[index][1]} onChange={this.handleFieldChange.bind(null, index)} componentClass="textarea" placeholder={field.prompt[0].text} />
            : ''}

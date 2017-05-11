@@ -11,17 +11,22 @@ class ReviewOrder extends React.Component {
     this.state = {
     };
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleSubmitOrder = this.handleSubmitOrder.bind(this);
   }
 
   handleEdit(){
     browserHistory.replace("/orderdetails");
   }
 
+  handleSubmitOrder(){
+    this.props.orderStore.submitOrder();
+  }
+
 
   render(){
     let templateDetails = (
       this.props.orderStore.fieldInfo.map((field, index) =>
-      <h4 key={index}>{field[0]}: {field[1]}</h4>
+      <h4 key={index}>{field[0].fieldname}: {field[1]}</h4>
     ));
 
     return(
@@ -44,7 +49,7 @@ class ReviewOrder extends React.Component {
             <h4>{this.props.orderStore.countryCode}</h4>
             <h4>{this.props.orderStore.email}</h4>
             <h4>{this.props.orderStore.phone}</h4>
-            <Button onClick={this.handleReviewOrder} bsStyle="primary" style={{marginTop:'20px', marginBottom:'20px', marginRight: '20px'}}>Submit Order</Button>
+            <Button onClick={this.handleSubmitOrder} bsStyle="primary" style={{marginTop:'20px', marginBottom:'20px', marginRight: '20px'}}>Submit Order</Button>
             <Button onClick={this.handleEdit} bsStyle="primary" style={{marginTop:'20px', marginBottom:'20px'}}>Edit Order</Button>
           </div>
     );

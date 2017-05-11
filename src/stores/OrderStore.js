@@ -21,77 +21,84 @@ export default class OrderStore {
       countryCode: '',
       email: '',
       phone: '',
-      deliveryInfo: {}
+      deliveryInfo: {},
+      credentials: '',
+      orderResponse: {}
     });
 
-    this.savePosition = this.savePosition.bind(this);
-    this.getWeatherInfo = this.getWeatherInfo.bind(this);
-    this.saveFieldNotes = this.saveFieldNotes.bind(this);
     this.loadProducts = this.loadProducts.bind(this);
-    this.honeyHoleClick = this.honeyHoleClick.bind(this);
-    this.deleteLocation = this.deleteLocation.bind(this);
     this.getItemDetails = this.getItemDetails.bind(this);
+    this.submitOrder = this.submitOrder.bind(this);
   }
 
-  savePosition(ownerId) {
-    let coordinates = {
-      latitude: this.center.lat,
-      longitude: this.center.lng
+  submitOrder() {
+    let templateData = [];
+    if(this.fieldInfo.length > 0){
+      this.fieldInfo.forEach(field =>
+        templateData.push({
+          templateDataName: field[0].htmlfieldname,
+          templateDataValue: field[1]
+        })
+    );}
+    let partnerOrderReference = 1;
+    let orderCustomer = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      companyName: this.companyName,
+      address1: this.address1,
+      address2: this.address2,
+      city: this.city,
+      state: this.state,
+      postalCode: this.postalCode,
+      countryCode: this.countryCode,
+      email: this.email,
+      phone: this.phone
     };
-    let weather = {
-      temp: this.weather.temp,
-      conditions: this.weather.conditions,
-      windSpeed: this.weather.windSpeed,
-      windDir: this.weather.windDir
-    };
-    let title = this.defaultTitle;
-    fetch('/location/locations', {
+    let items = [
+      {
+        itemSequenceNumber: 1,
+        productID: this.currentOrder.id,
+        quantity: this.currentOrder.quantityDefault,
+        templateData: templateData
+      }];
+    let shipments = [{
+      shipmentSequenceNumber: 1,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      companyName: this.companyName,
+      address1: this.address1,
+      address2: this.address2,
+      city: this.city,
+      state: this.state,
+      postalCode: this.postalCode,
+      countryCode: this.countryCode,
+      email: this.email,
+      phone: this.phone,
+      shippingMethod: this.deliveryInfo.deliveryMethodCode
+    }];
+
+    fetch('http://cors-anywhere.herokuapp.com/https://testapi.pfl.com/orders?apikey=136085', {
       method: 'POST',
       headers: {
+        'Authorization': `Basic ${this.credentials}`,
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        date: new Date,
-        title: title,
-        coordinates: coordinates,
-        weather: weather,
-        owner: ownerId
+        partnerOrderReference: partnerOrderReference,
+        orderCustomer: orderCustomer,
+        items: items,
+        shipments: shipments,
       })
     })
     .then(result => result.json())
-    .then(result => this.currentLocation = result)
-    .then(result => this.locations.push(result));
-  }
-
-  getWeatherInfo() {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.center.lat}&lon=${this.center.lng}&APPID=72c2e10afa58ce6e31b103d41b7125b8`)
-       .then(result => result.json())
-       .then(data => this.weather = {conditions: data.weather[0].description, temp: data.main.temp, windSpeed: data.wind.speed, windDir: data.wind.deg });
-  }
-
-  saveFieldNotes(locationId, title, notes){
-    if(title == ''){
-      title = "New Honey Hole";
-    }
-    fetch('/location/locations/' + locationId, {
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        title: title,
-        notes: notes
-      })
-    })
-    .then(result => result.json())
-    .then(result => this.currentLocation = result)
-    .then(result => this.locations[this.locations.length - 1] = result);
+    .then(result => this.orderResponse = result)
+    .then(result => browserHistory.replace("/ordernumber"));
   }
 
   loadProducts(username, password) {
     let credentials = btoa(username + ":" + password);
+    this.credentials = credentials;
     fetch('http://cors-anywhere.herokuapp.com/https://testapi.pfl.com/products?apikey=136085', {
       method: 'GET',
       headers: {
@@ -116,19 +123,6 @@ export default class OrderStore {
     .then(result => result.json())
     .then(result => this.currentOrder = result.results.data)
     .then(result => browserHistory.replace("/orderdetails"));
-    // .then(result => console.log(result.results.data));
   }
 
-  deleteLocation(locationId) {
-    console.log(locationId);
-    let newList = this.locations.filter(l => l._id !== locationId);
-    this.locations = newList;
-    fetch('/location/locations/' + locationId, {
-      method: 'DELETE'
-    });
-  }
-
-  honeyHoleClick(){
-    this.honeyHoleClicked = false;
-  }
 }
