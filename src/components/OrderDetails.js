@@ -26,10 +26,17 @@ class OrderDetails extends React.Component {
   }
 
 // creates an array in the orderStore which will store all of the Template Field data.
+// Fills in blank string for Separator fields.
   loadFieldInfo(){
     let fieldInfo = [];
     this.props.orderStore.currentOrder.templateFields.fieldlist.field.forEach(field =>
     this.props.orderStore.fieldInfo.push([field, '']));
+    this.props.orderStore.fieldInfo.forEach(field =>
+      {
+      if(field[0].type == "SEPARATOR"){
+        field[1] = "**********";
+      }
+    });
   }
 
 // depending on which mailing option is selected, sets the state equal to the index of the deliveredPrices array.

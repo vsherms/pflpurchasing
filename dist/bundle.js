@@ -55947,6 +55947,7 @@ var OrderDetails = function (_React$Component) {
     }
 
     // creates an array in the orderStore which will store all of the Template Field data.
+    // Fills in blank string for Separator fields.
 
   }, {
     key: 'loadFieldInfo',
@@ -55956,6 +55957,11 @@ var OrderDetails = function (_React$Component) {
       var fieldInfo = [];
       this.props.orderStore.currentOrder.templateFields.fieldlist.field.forEach(function (field) {
         return _this2.props.orderStore.fieldInfo.push([field, '']);
+      });
+      this.props.orderStore.fieldInfo.forEach(function (field) {
+        if (field[0].type == "SEPARATOR") {
+          field[1] = "**********";
+        }
       });
     }
 
