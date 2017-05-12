@@ -11,6 +11,7 @@ class OrderNumber extends React.Component {
     this.handleEdit = this.handleEdit.bind(this);
   }
 
+// if user gets error, they can go back to the OrderDetails page, and re-enter info.
   handleEdit(){
     browserHistory.replace("/orderdetails");
   }

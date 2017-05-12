@@ -13,6 +13,8 @@ class Products extends React.Component {
     this.orderItem = this.orderItem.bind(this);
   }
 
+// This method takes in a product and event from the map function component
+// in the render, and passes it to the API call getItemDetails.
   orderItem(product, e){
     this.props.orderStore.getItemDetails(product.productID);
   }

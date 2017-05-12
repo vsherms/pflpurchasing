@@ -15,9 +15,9 @@ class Template extends React.Component {
     this.handleFieldChange = this.handleFieldChange.bind(this);
   }
 
+// This method is attached to each Template field, and saves into it's proper index on the fieldInfo array.
   handleFieldChange(index, e){
     this.props.orderStore.fieldInfo[index][1] = e.target.value;
-    console.log(this.props.orderStore.fieldInfo[index][1]);
   }
 
   render(){

@@ -16,6 +16,7 @@ class ReviewOrder extends React.Component {
     this.handleSubmitOrder = this.handleSubmitOrder.bind(this);
   }
 
+// if user selects edit button, sends back to the OrderDetails page.
   handleEdit(){
     browserHistory.replace("/orderdetails");
   }

@@ -20,21 +20,24 @@ class OrderDetails extends React.Component {
     this.loadFieldInfo = this.loadFieldInfo.bind(this);
   }
 
+// calls loadFieldInfo method upon loading page.
   componentDidMount(){
     this.loadFieldInfo();
   }
 
+// creates an array in the orderStore which will store all of the Template Field data.
   loadFieldInfo(){
     let fieldInfo = [];
     this.props.orderStore.currentOrder.templateFields.fieldlist.field.forEach(field =>
     this.props.orderStore.fieldInfo.push([field, '']));
   }
 
-
+// depending on which mailing option is selected, sets the state equal to the index of the deliveredPrices array.
   handleRadioClick(e){
     this.setState({mailingOptions: e.target.value});
   }
 
+// stores the final mailing option and pushes to the ReviewOrder page.
   handleReviewOrder(){
     this.props.orderStore.deliveryInfo = this.props.orderStore.currentOrder.deliveredPrices[this.state.mailingOptions];
     browserHistory.replace("/revieworder");

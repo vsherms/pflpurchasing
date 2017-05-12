@@ -1,3 +1,4 @@
+// This component holds the fields for the user to add their shipping info.
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
