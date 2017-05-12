@@ -39,7 +39,7 @@ export default class OrderStore {
   loadProducts(username, password) {
     let credentials = btoa(username + ":" + password);
     this.credentials = credentials;
-    fetch('http://cors-anywhere.herokuapp.com/https://testapi.pfl.com/products?apikey=136085', {
+    fetch('https://cors-anywhere.herokuapp.com/https://testapi.pfl.com/products?apikey=136085', {
       method: 'GET',
       headers: {
         'Authorization': `Basic ${credentials}`,
@@ -53,7 +53,7 @@ export default class OrderStore {
 
 //API GET request to get details of specific product. Response is saved as currentOrder.
   getItemDetails(productID){
-    fetch(`http://cors-anywhere.herokuapp.com/https://testapi.pfl.com/products?id=${productID}&apikey=136085`, {
+    fetch(`https://cors-anywhere.herokuapp.com/https://testapi.pfl.com/products?id=${productID}&apikey=136085`, {
       method: 'GET',
       headers: {
         'Authorization': `Basic ${this.credentials}`,
@@ -114,7 +114,7 @@ export default class OrderStore {
       shippingMethod: this.deliveryInfo.deliveryMethodCode
     }];
 
-    fetch('http://cors-anywhere.herokuapp.com/https://testapi.pfl.com/orders?apikey=136085', {
+    fetch('https://cors-anywhere.herokuapp.com/https://testapi.pfl.com/orders?apikey=136085', {
       method: 'POST',
       headers: {
         'Authorization': `Basic ${this.credentials}`,

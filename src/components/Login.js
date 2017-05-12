@@ -35,7 +35,7 @@ class Login extends React.Component {
         <form method="" role="form">
           <div className="form-group" style={{marginBottom: '0px', display: 'flex', flexDirection: 'row', alignItems:'center', height:'15vh'}}>
             <input style={{margin:'1vw'}} onChange={this.handlePflUserChange} value={this.state.pflUser} type="text" className="form-control" id="pflUser" placeholder="PFL username"/>
-            <input onChange={this.handlePflPassChange} value={this.state.pflPass} type="pflPass" className="form-control" id="pflPass" placeholder="PFL Password"/>
+            <input onChange={this.handlePflPassChange} value={this.state.pflPass} type="password" className="form-control" id="pflPass" placeholder="PFL Password"/>
             <button onClick={this.handleUserAuth} type="submit" className="submitForm2"><strong>Log In</strong></button>
           </div>
         </form>

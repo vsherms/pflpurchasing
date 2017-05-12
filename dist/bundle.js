@@ -26159,7 +26159,7 @@ var Login = function (_React$Component) {
             'div',
             { className: 'form-group', style: { marginBottom: '0px', display: 'flex', flexDirection: 'row', alignItems: 'center', height: '15vh' } },
             _react2.default.createElement('input', { style: { margin: '1vw' }, onChange: this.handlePflUserChange, value: this.state.pflUser, type: 'text', className: 'form-control', id: 'pflUser', placeholder: 'PFL username' }),
-            _react2.default.createElement('input', { onChange: this.handlePflPassChange, value: this.state.pflPass, type: 'pflPass', className: 'form-control', id: 'pflPass', placeholder: 'PFL Password' }),
+            _react2.default.createElement('input', { onChange: this.handlePflPassChange, value: this.state.pflPass, type: 'password', className: 'form-control', id: 'pflPass', placeholder: 'PFL Password' }),
             _react2.default.createElement(
               'button',
               { onClick: this.handleUserAuth, type: 'submit', className: 'submitForm2' },
@@ -56906,7 +56906,7 @@ var OrderStore = function () {
 
       var credentials = btoa(username + ":" + password);
       this.credentials = credentials;
-      fetch('http://cors-anywhere.herokuapp.com/https://testapi.pfl.com/products?apikey=136085', {
+      fetch('https://cors-anywhere.herokuapp.com/https://testapi.pfl.com/products?apikey=136085', {
         method: 'GET',
         headers: {
           'Authorization': 'Basic ' + credentials,
@@ -56927,7 +56927,7 @@ var OrderStore = function () {
     value: function getItemDetails(productID) {
       var _this2 = this;
 
-      fetch('http://cors-anywhere.herokuapp.com/https://testapi.pfl.com/products?id=' + productID + '&apikey=136085', {
+      fetch('https://cors-anywhere.herokuapp.com/https://testapi.pfl.com/products?id=' + productID + '&apikey=136085', {
         method: 'GET',
         headers: {
           'Authorization': 'Basic ' + this.credentials,
@@ -56996,7 +56996,7 @@ var OrderStore = function () {
         shippingMethod: this.deliveryInfo.deliveryMethodCode
       }];
 
-      fetch('http://cors-anywhere.herokuapp.com/https://testapi.pfl.com/orders?apikey=136085', {
+      fetch('https://cors-anywhere.herokuapp.com/https://testapi.pfl.com/orders?apikey=136085', {
         method: 'POST',
         headers: {
           'Authorization': 'Basic ' + this.credentials,
