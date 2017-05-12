@@ -1,3 +1,5 @@
+// This component enables the user to view the input they has given, and then submit the order.
+// The user can also go back and edit the prior page.
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { FormControl, ControlLabel, FormGroup, Button, Col, Image, Radio, ListGroup, ListGroupItem } from 'react-bootstrap';
@@ -18,6 +20,7 @@ class ReviewOrder extends React.Component {
     browserHistory.replace("/orderdetails");
   }
 
+// the submitOrder method is called from the orderStore, which does the API POST request to submit the order.
   handleSubmitOrder(){
     this.props.orderStore.submitOrder();
   }

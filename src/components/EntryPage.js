@@ -11,7 +11,7 @@ export default class EntryPage extends React.Component {
           <span><h1 className="pflentry">PFL <span style={{color:'#ffed00'}}>Purchasing</span></h1></span>
           <Login/>
         </div>
-          <SignUp/>
+        <SignUp/>
       </div>
     );
   }

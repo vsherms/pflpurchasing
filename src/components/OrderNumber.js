@@ -1,3 +1,5 @@
+// This component retrieves the Order Number from the orderStore and displays it,
+// or displays that there was an error, if that's the case.
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Button } from 'react-bootstrap';
@@ -26,10 +28,10 @@ class OrderNumber extends React.Component {
     let errorMessage = (
       <div>
         <h1 className="welcome-header">We are sorry, there was an <span style={{color:'red'}}>error</span>!</h1>
-          <h1 style={{textAlign:'center', fontFamily: 'Rokkitt', border:'1px solid black', borderRadius:'10px', padding:'40px'}}>
-            Please make sure you correctly filled out all of the fields
-          </h1>
-          <Button onClick={this.handleEdit} bsStyle="primary" style={{marginTop:'20px', marginBottom:'20px'}}>Edit Order</Button>
+        <h1 style={{textAlign:'center', fontFamily: 'Rokkitt', border:'1px solid black', borderRadius:'10px', padding:'40px'}}>
+          Please make sure you correctly filled out all of the fields
+        </h1>
+        <Button onClick={this.handleEdit} bsStyle="primary" style={{marginTop:'20px', marginBottom:'20px'}}>Edit Order</Button>
       </div>
     );
 

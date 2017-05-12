@@ -12,7 +12,6 @@ class Navigation extends React.Component {
 
   render() {
     return (
-
       <div className="navigationBar">
         <Navbar collapseOnSelect style={{backgroundColor:'white'}}>
           <Navbar.Header>

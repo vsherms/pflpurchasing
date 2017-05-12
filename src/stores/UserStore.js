@@ -1,3 +1,4 @@
+//This mobx Store saves User data, which is used in the API Authorization headers, and to allow login Authentication.
 import {extendObservable} from 'mobx';
 import {browserHistory} from 'react-router';
 import React from 'react';

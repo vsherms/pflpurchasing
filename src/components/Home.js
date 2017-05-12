@@ -10,6 +10,7 @@ class Home extends React.Component{
     this.resetStore = this.resetStore.bind(this);
   }
 
+//API GET request to /products request origates here by calling loadProducts method from orderStore.
   componentDidMount() {
     this.props.orderStore.loadProducts(this.props.userStore.pflUser, this.props.userStore.pflPass);
     this.resetStore();
@@ -36,7 +37,7 @@ class Home extends React.Component{
     return (
         <div className="container">
           <h2 className="welcome-header">Welcome, {this.props.userStore.firstName}! </h2>
-            <Products />
+            <Products/>
         </div>
     );
   }

@@ -1,3 +1,5 @@
+//This component shows the details that must be input by user, including the Template data, & shipping info.
+// Lines 63-64 are a ternary which invokes a Template component, only if the product has a Template.
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { FormControl, ControlLabel, FormGroup, Button, Col, Image, Radio } from 'react-bootstrap';

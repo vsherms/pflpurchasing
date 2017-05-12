@@ -1,3 +1,6 @@
+// This component creates and displays an array of input fields, based on the type of field it is.
+// Each input field has it's own handleFieldChange method,
+// which takes it's unique input and saves in the the orderStore.
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { ControlLabel, FormControl } from 'react-bootstrap';
@@ -43,7 +46,8 @@ class Template extends React.Component {
 
     return(
       <div style={{border: '1px solid black', borderRadius: '10px',
-        display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '50%'}}>
+        display: 'flex', flexDirection: 'column',
+        justifyContent: 'center', alignItems: 'center', width: '50%'}}>
         <h3>Product Template</h3>
         {fieldList}
       </div>
